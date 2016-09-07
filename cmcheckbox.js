@@ -1,5 +1,5 @@
 /**
- * cmcheckbox jQuery Plugin v0.0.1
+ * cmcheckbox jQuery Plugin v1.0
  * Replaces native input boxes with customized HTML
  * Simply attach cmcheckbox() to any element.
  * Yiannis Despotis, Convertico Media

@@ -1,4 +1,6 @@
-# cmcheckbox jQuery Plugin v0.0.1
+# cmcheckbox jQuery Plugin v1.0
+
+[Read Documentation](https://yiannisdesp.github.io/cmcheckbox)
 
 ### Dependencies
  - jQuery 1.9+
@@ -11,9 +13,9 @@
 
 ##### HTML:
 
-    <label class="cmcheckbox">
+    <label class="cmcheckbox white thin">
 		<input type="checkbox" checked>
-		<span>Option Label</span>
+		<span>Alloy Wheels</span>
 	</label>
 
 ##### JavaScript:
