@@ -1,4 +1,4 @@
-# cmcheckbox jQuery Plugin
+# cmcheckbox jQuery Plugin v0.0.1
 
 ### Dependencies
  - jQuery 1.9+
