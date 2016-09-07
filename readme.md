@@ -11,9 +11,9 @@
 
 ##### HTML:
 
-    <label class="cmcheckbox white thin">
+    <label class="cmcheckbox">
 		<input type="checkbox" checked>
-		<span>Alloy Wheels</span>
+		<span>Option Label</span>
 	</label>
 
 ##### JavaScript:
