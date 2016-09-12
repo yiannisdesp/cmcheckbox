@@ -1,5 +1,5 @@
 /**
- * cmcheckbox jQuery Plugin v1.0
+ * cmcheckbox jQuery Plugin v0.0.1
  * Replaces native input boxes with customized HTML
  * Simply attach cmcheckbox() to any element.
  * Yiannis Despotis, Convertico Media
@@ -88,7 +88,8 @@
 
         // custom checkbox click event
         function attachEvent(elementIdentifier){
-        	$(elementIdentifier).on("click", "span", function(e){
+        	$('body').on("click", elementIdentifier + " span", function(e){
+                // console.log(elementIdentifier);
                 var $customCheckbox = $(this).closest(elementIdentifier);
         		var $checkbox = $customCheckbox.children("input[type='checkbox']");
 	        	if($checkbox[0].checked){
@@ -110,8 +111,9 @@
         var $checkboxContainer; // checkbox jQuery container
         var $checkbox; // actual checkbox
         var style; // css style
-        var iterations = 1;
-        return this.each(function() {
+        var bindingElements = [];
+        // transform native checkboxes
+        this.each(function() {
 	        // Convert native checkbox to all attached classes or ids
 	        $checkboxContainer = $(this);
 	        $checkbox = $checkboxContainer.children("input[type='checkbox']");
@@ -122,23 +124,31 @@
 	        }else{
 	        	styleCheckbox('unchecked', $checkboxContainer);
 	        }
-	        if(iterations === 1){
-	        	// identify class or ID
-	        	var IDAttribute = $(this).attr('id');
-	        	var className = ($(this).attr("class")).replace(new RegExp(" ", 'g'), ".");
-				// For some browsers, 'attr' is undefined; for others, 'attr' is false.  Check for both.
-				if (typeof IDAttribute !== typeof undefined && IDAttribute !== false) {
-				    // take ID
-				    attachEvent("#"+IDAttribute); // attach event by id
-				}else{
-					// take class
-					attachEvent("."+className); // attach event by class
-				}
-	        	// append css general styles
-	        	generateHeadCss("."+className+":hover", "cursor:pointer;");
-	        }
-	        iterations++;
+        	// identify class or ID
+        	var IDAttribute = $(this).attr('id');
+        	var className = ($(this).attr("class")).replace(new RegExp(" ", 'g'), ".");
+			// For some browsers, 'attr' is undefined; for others, 'attr' is false.  Check for both.
+			if (typeof IDAttribute !== typeof undefined && IDAttribute !== false) {
+			    // take ID
+                bindingElements.push("#" + IDAttribute) // attach event by id
+			}else{
+				// take class
+                bindingElements.push("." + className) // attach event by class
+                console.log("." + className);
+			}
 	    });
+
+        if(bindingElements.length > 0){
+            var uniqueBindingElements = []; // filter out unique elements
+            $.each(bindingElements, function(i, value){
+                if($.inArray(value, uniqueBindingElements) === -1) uniqueBindingElements.push(value);
+            });
+            $.each(uniqueBindingElements, function(index, element){
+                attachEvent(element);
+                // append css general styles
+                generateHeadCss(element+":hover", "cursor:pointer;");
+            });    
+        }
 
 	};
 
