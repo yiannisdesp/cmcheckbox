@@ -1,5 +1,5 @@
 /**
- * cmcheckbox jQuery Plugin v0.0.1
+ * cmcheckbox jQuery Plugin v1.0
  * Replaces native input boxes with customized HTML
  * Simply attach cmcheckbox() to any element.
  * Yiannis Despotis, Convertico Media
@@ -89,7 +89,6 @@
         // custom checkbox click event
         function attachEvent(elementIdentifier){
         	$('body').on("click", elementIdentifier + " span", function(e){
-                // console.log(elementIdentifier);
                 var $customCheckbox = $(this).closest(elementIdentifier);
         		var $checkbox = $customCheckbox.children("input[type='checkbox']");
 	        	if($checkbox[0].checked){
@@ -134,7 +133,6 @@
 			}else{
 				// take class
                 bindingElements.push("." + className) // attach event by class
-                console.log("." + className);
 			}
 	    });
 
